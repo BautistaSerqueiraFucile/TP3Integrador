@@ -22,11 +22,13 @@ import java.util.Optional;
 
 
 @Component
-@AllArgsConstructor (onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CargaDeDatos {
-
+    @Autowired
     private final RepoCarrera repoCarrera;
+    @Autowired
     private final RepoEstudiante repoEstudiante;
+    @Autowired
     private final RepoEstudianteCarrera repoEstudianteCarrera;
 
     public void cargarDatosDesdeCSV() throws IOException {

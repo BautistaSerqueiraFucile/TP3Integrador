@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 
-@AllArgsConstructor (onConstructor = @__(@Autowired))
-@NoArgsConstructor (onConstructor = @__(@Autowired))
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
