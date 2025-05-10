@@ -6,14 +6,6 @@ import java.util.List;
 public interface BaseService<E>{
 
     /**
-     * Servicio encargado de retornar un listado completo de una entidad.
-     *
-     * @return Listado con entidades.
-     * @throws Exception e
-     */
-    public List<E> findAll()throws Exception;
-
-    /**
      * Servicio encargado de buscar y retornar una entidad coincidente con el id ingresado por parámetro.
      *
      * @param id Identificador únido de la entidad.

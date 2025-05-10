@@ -9,6 +9,7 @@ import java.util.Optional;
 @NoRepositoryBean
 public interface RepoBase<T,ID extends Serializable> extends org.springframework.data.repository.Repository<T,ID> {
 
+
     /**
      * Busca y devuelve una entidad de acuerdo al id ingresado por parámetro.
      * @param id Identificador único de la entidad.
