@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/estudiante")
+@RequestMapping("/estudiantes")
 public class EstudianteController {
 
     @Autowired
@@ -18,6 +18,15 @@ public class EstudianteController {
     public ResponseEntity<?> getAllbyEdad(){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllbyEdad());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
+        }
+    }
+
+    @GetMapping("carrera/{carrera}/ciudad/{ciudad}")
+    public ResponseEntity<?> getAllByCarreraCiudad(@PathVariable String carrera, @PathVariable String ciudad){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllByCarreraCiudad(carrera, ciudad));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
         }

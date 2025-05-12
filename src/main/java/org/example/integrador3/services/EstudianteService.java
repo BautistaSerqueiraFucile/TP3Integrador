@@ -1,6 +1,8 @@
 package org.example.integrador3.services;
 
+import org.example.integrador3.dto.EstudianteCarreraCiudadDTO;
 import org.example.integrador3.dto.EstudianteDTO;
+import org.example.integrador3.dto.EstudiantePorCarreraDTO;
 import org.example.integrador3.repository.RepoEstudiante;
 import org.example.integrador3.tables.Estudiante;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,11 @@ public class EstudianteService implements BaseService<Estudiante> {
     public List<EstudianteDTO> findAllbyEdad() throws Exception {
         List<Estudiante> listEst = repoEst.findAllByEdad();
         return createEstudianteDTO(listEst);
+    }
+
+    @Transactional
+    public List<EstudianteCarreraCiudadDTO> findAllByCarreraCiudad(String carrera, String ciudad) throws Exception {
+        return repoEst.findAllByCarreraCiudad(carrera, ciudad);
     }
 
     @Transactional
