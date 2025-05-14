@@ -1,4 +1,4 @@
-package org.example.integrador3.dto;
+package org.example.integrador3.repository.dto.carrera;
 
 
 import lombok.AllArgsConstructor;

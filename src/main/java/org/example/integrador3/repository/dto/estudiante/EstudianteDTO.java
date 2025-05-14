@@ -1,4 +1,4 @@
-package org.example.integrador3.dto;
+package org.example.integrador3.repository.dto.estudiante;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -18,13 +18,6 @@ public interface RepoBase<T,ID extends Serializable> extends org.springframework
     Optional<T> findById(Long id);
 
     /**
-     * Indica si existe la entidad con el id ingresado por parámetro.
-     * @param id Identificador único de la entidad.
-     * @return True en caso de existir, caso contraio, false.
-     */
-    boolean existsById(Long id);
-
-    /**
      * Elimina una entidad correspondiente al id ingresado por parámetro.
      * @param id Identificador único de la entidad.
      */
@@ -36,5 +29,12 @@ public interface RepoBase<T,ID extends Serializable> extends org.springframework
      * @return retorna la entidad persistida con el id asignado.
      */
     T save( T persisted);
+
+    /**
+     Indica si existe la entidad con el id ingresado por parámetro.
+     @param id Identificador único de la entidad.
+     @return True en caso de existir, caso contraio, false.
+     */
+    boolean existsById(Long id);
 
 }

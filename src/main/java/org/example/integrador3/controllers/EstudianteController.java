@@ -15,7 +15,7 @@ public class EstudianteController {
     private EstudianteService estudianteService;
 
     @GetMapping("")
-    public ResponseEntity<?> getAllbyEdad(){
+    public ResponseEntity<?> getAllbyEdad(){ //c
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllbyEdad());
         }catch (Exception e){
@@ -23,7 +23,7 @@ public class EstudianteController {
         }
     }
 
-    @GetMapping("carrera/{carrera}/ciudad/{ciudad}")
+    @GetMapping("carrera/{carrera}/ciudad/{ciudad}") //g
     public ResponseEntity<?> getAllByCarreraCiudad(@PathVariable String carrera, @PathVariable String ciudad){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findAllByCarreraCiudad(carrera, ciudad));
@@ -32,7 +32,7 @@ public class EstudianteController {
         }
     }
 
-    @GetMapping("legajo/{lu}")
+    @GetMapping("legajo/{lu}") //d
     public ResponseEntity<?> getAllbyLU(@PathVariable int lu){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findByLU(lu));
@@ -41,7 +41,7 @@ public class EstudianteController {
         }
     }
 
-    @GetMapping("genero/{genero}")
+    @GetMapping("genero/{genero}") //e
     public ResponseEntity<?> getAllbyGenero(@PathVariable String genero){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteService.findByGenero(genero));
@@ -50,7 +50,7 @@ public class EstudianteController {
         }
     }
 
-    @PostMapping("")
+    @PostMapping("") //a
     public ResponseEntity<?> save(@RequestBody Estudiante entity){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteService.save(entity));

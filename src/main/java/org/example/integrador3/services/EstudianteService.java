@@ -1,15 +1,13 @@
 package org.example.integrador3.services;
 
-import org.example.integrador3.dto.EstudianteCarreraCiudadDTO;
-import org.example.integrador3.dto.EstudianteDTO;
-import org.example.integrador3.dto.EstudiantePorCarreraDTO;
+import org.example.integrador3.repository.dto.estudiante.EstudianteCarreraCiudadDTO;
+import org.example.integrador3.repository.dto.estudiante.EstudianteDTO;
 import org.example.integrador3.repository.RepoEstudiante;
 import org.example.integrador3.tables.Estudiante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("EstudianteService")
@@ -20,14 +18,12 @@ public class EstudianteService implements BaseService<Estudiante> {
 
     @Transactional
     public List<EstudianteDTO> findByGenero(String genero) throws Exception{
-        List<Estudiante> listEst = repoEst.findByGenero(genero);
-        return createEstudianteDTO(listEst);
+        return repoEst.findByGenero(genero);
     }
 
     @Transactional
     public List<EstudianteDTO> findAllbyEdad() throws Exception {
-        List<Estudiante> listEst = repoEst.findAllByEdad();
-        return createEstudianteDTO(listEst);
+        return repoEst.findAllByEdad();
     }
 
     @Transactional
@@ -37,15 +33,17 @@ public class EstudianteService implements BaseService<Estudiante> {
 
     @Transactional
     public List<EstudianteDTO> findByLU(int lu) throws Exception {
-        List<Estudiante> listEst = repoEst.findByLU(lu);
-        return createEstudianteDTO(listEst);
+        return repoEst.findByLU(lu);
     }
 
     @Override
     @Transactional
     public Estudiante findById(Long id) throws Exception {
         try{
-            return repoEst.findById(id).get();
+            if (repoEst.findById(id).isPresent()) {
+                return repoEst.findById(id).get();
+            }
+            return null;
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -65,21 +63,12 @@ public class EstudianteService implements BaseService<Estudiante> {
     @Transactional
     public Estudiante update(Long id, Estudiante entity) throws Exception {
         try{
-            Estudiante est = repoEst.findById(id).get();
-            est = repoEst.save(entity);
-            return est;
-        } catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    private List<EstudianteDTO> createEstudianteDTO(List<Estudiante> listEst) throws Exception {
-        List<EstudianteDTO> listEstDto = new ArrayList<>();
-        try{
-            for (Estudiante est : listEst) {
-                listEstDto.add(new EstudianteDTO(est.getDni_estudiante(), est.getNombre(), est.getApellido(), est.getEdad() ,est.getGenero(), est.getCiudad(), est.getLu()));
+            if (repoEst.findById(id).isPresent()){
+                Estudiante est = repoEst.findById(id).get();
+                est = repoEst.save(entity);
+                return est;
             }
-            return listEstDto;
+            return null;
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }

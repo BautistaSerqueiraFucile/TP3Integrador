@@ -36,4 +36,12 @@ public class Estudiante_carrera {
 
     @Column
     private int antiguedad;
+
+    public Estudiante_carrera(Estudiante est, Carrera car, int anio_inscripcion) {
+        this.estudiante = est;
+        this.carrera = car;
+        this.anio_inscripcion = anio_inscripcion;
+        this.anio_graduacion = 0;
+        this.antiguedad = 0;
+    }
 }
