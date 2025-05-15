@@ -14,14 +14,18 @@ import java.util.List;
 public class CarreraReporteDTO {
 
     private String nombreCarrera;
-    private List<AnioReporteDTO> reportesPorAnio;
+    private int anioInscripcion;
+    private long inscriptos;
+    private long egresados;
 
     @Override
     public String toString() {
         return "\n{" +
-                "nombreCarrera='" + nombreCarrera + '\'' +
-                ", reportesPorAño=" + reportesPorAnio +
-                '}';
+                "nombreCarrera='" + nombreCarrera + "\n" +
+                ", Año inscripcion=" + anioInscripcion + "\n" +
+                ", cantidad inscriptos=" + anioInscripcion + "\n" +
+                ", cantidad graduados=" + anioInscripcion + "\n" +
+                "}";
     }
 }
 

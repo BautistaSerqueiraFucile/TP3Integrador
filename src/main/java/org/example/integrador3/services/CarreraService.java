@@ -2,6 +2,7 @@ package org.example.integrador3.services;
 
 
 import jakarta.transaction.Transactional;
+import org.example.integrador3.repository.dto.carrera.CarreraReporteDTO;
 import org.example.integrador3.repository.dto.carrera.EstudiantePorCarreraDTO;
 import org.example.integrador3.repository.RepoCarrera;
 import org.example.integrador3.tables.Carrera;
@@ -16,10 +17,14 @@ public class CarreraService implements BaseService<Carrera> {
     @Autowired
     private RepoCarrera repoCar;
 
-
     @Transactional
     public List<EstudiantePorCarreraDTO> findCarrerasConMasInscriptos(){
         return repoCar.findCarrerasConMasInscriptos();
+    }
+
+    @Transactional
+    public List<CarreraReporteDTO> findReporteCarreras(){
+        return repoCar.findReporteCarreras();
     }
 
     @Override

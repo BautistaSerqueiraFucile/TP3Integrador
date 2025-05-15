@@ -24,4 +24,13 @@ public class CarreraController {
         }
     }
 
+    @GetMapping("reporte")
+    public ResponseEntity<?> getReporteCarreras(){ //h
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(carService.findReporteCarreras());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
+        }
+    }
+
 }
